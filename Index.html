@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Muhammad Azzam Mifftahul Choir">
+  <title>Muhammad Azzam Mifftahul Choir | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0d1b2e;
+      --card: rgba(255,255,255,.08);
+      --text: #f5f7fb;
+      --muted: #b8c3d4;
+      --primary: #4f8cff;
+      --secondary: #7c4dff;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 20px 50px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(79,140,255,.18), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(124,77,255,.15), transparent 25%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7,17,31,.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .95rem;
+      transition: .3s;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    section { padding: 100px 0; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid rgba(79,140,255,.35);
+      border-radius: 999px;
+      background: rgba(79,140,255,.1);
+      color: #a9c8ff;
+      margin-bottom: 20px;
+      font-size: .9rem;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 1.02;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #72a7ff, #a883ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: .3s;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border: none;
+    }
+
+    .btn-secondary {
+      background: var(--card);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(79,140,255,.2);
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(15px);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 45px rgba(79,140,255,.35);
+    }
+
+    .profile-card h3 { text-align: center; margin-bottom: 20px; }
+
+    .info {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info div {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 9px;
+    }
+
+    .info span:first-child { color: var(--muted); }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p { color: var(--muted); }
+
+    .project {
+      background: linear-gradient(135deg, rgba(79,140,255,.13), rgba(124,77,255,.13));
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 45px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .project h3 { font-size: 1.8rem; margin-bottom: 12px; }
+    .project p { color: var(--muted); max-width: 700px; margin: auto; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px 15px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-7px);
+      border-color: rgba(79,140,255,.5);
+    }
+
+    .skill .icon { font-size: 2rem; margin-bottom: 10px; }
+    .skill h3 { font-size: 1rem; }
+
+    .experience {
+      position: relative;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .experience::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(var(--primary), var(--secondary));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 55px;
+      margin-bottom: 35px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 6px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: 4px solid var(--bg);
+    }
+
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 18px;
+    }
+
+    .timeline-card .year {
+      color: #9fc2ff;
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .timeline-card h3 { margin-bottom: 8px; }
+    .timeline-card p { color: var(--muted); }
+
+    .motto {
+      text-align: center;
+      padding: 70px 25px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(79,140,255,.16), rgba(124,77,255,.16));
+      border: 1px solid var(--border);
+    }
+
+    .motto p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .motto h2 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-style: italic;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 500px; margin: auto; }
+      .skills { grid-template-columns: repeat(2, 1fr); }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        background: rgba(7,17,31,.97);
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .menu-btn { display: block; }
+    }
+
+    @media (max-width: 500px) {
+      section { padding: 80px 0; }
+      .skills { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .skill { padding: 18px 8px; }
+      .project { padding: 30px 20px; }
+      .info div { flex-direction: column; gap: 2px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Azzam<span>.</span></a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#project">Project</a></li>
+          <li><a href="#skills">Skill</a></li>
+          <li><a href="#experience">Experience</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="reveal">
+          <div class="badge">PORTFOLIO • 2026</div>
+
+          <h1>Hi, I'm<br><span>Muhammad Azzam</span></h1>
+
+          <p class="hero-text">
+            Pelajar yang aktif dalam public speaking, MC, pidato, marching band,
+            dan kegiatan Pramuka. Terus belajar, berkembang, dan berani mencoba
+            hal baru.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#project">Lihat Portfolio</a>
+            <a class="btn btn-secondary" href="#experience">Pengalaman</a>
+          </div>
+        </div>
+
+        <div class="profile-card reveal">
+          <div class="avatar">MA</div>
+          <h3>Profil Singkat</h3>
+
+          <div class="info">
+            <div><span>Nama</span><strong>Muhammad Azzam Mifftahul Choir</strong></div>
+            <div><span>Tanggal Lahir</span><strong>22/10/2009</strong></div>
+            <div><span>Tempat Lahir</span><strong>Kota Bekasi</strong></div>
+            <div><span>Agama</span><strong>Islam</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Project / Portfolio</h2>
+          <p>Beberapa kegiatan dan project yang pernah diikuti.</p>
+        </div>
+
+        <div class="project reveal">
+          <div class="project-icon">🚀</div>
+          <h3>Sukses with Gen Z</h3>
+          <p>
+            Lingkar Pemuda — kegiatan yang berfokus pada pengembangan diri,
+            kreativitas, dan semangat generasi muda untuk terus berkembang.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>My Skills</h2>
+          <p>Kemampuan yang terus saya kembangkan.</p>
+        </div>
+
+        <div class="skills">
+          <div class="skill reveal">
+            <div class="icon">🎤</div>
+            <h3>Public Speaking</h3>
+          </div>
+
+          <div class="skill reveal">
+            <div class="icon">🎙️</div>
+            <h3>MC</h3>
+          </div>
+
+          <div class="skill reveal">
+            <div class="icon">🗣️</div>
+            <h3>Pidato</h3>
+          </div>
+
+          <div class="skill reveal">
+            <div class="icon">🥁</div>
+            <h3>Marching Band</h3>
+          </div>
+
+          <div class="skill reveal">
+            <div class="icon">⛺</div>
+            <h3>Pramuka</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Experience</h2>
+          <p>Pengalaman kegiatan dan prestasi.</p>
+        </div>
+
+        <div class="experience">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="year">2026</div>
+              <h3>Panitia Lomba Pramuka LT II Kwarran Padalarang</h3>
+              <p>
+                Berpartisipasi sebagai panitia dalam pelaksanaan Lomba Tingkat II
+                Kwarran Padalarang.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="year">2025</div>
+              <h3>Perform Marching Band — Hari Santri Nasional</h3>
+              <p>
+                Tampil dalam kegiatan Hari Santri Nasional 2025 di Kantor
+                Walikota Rangkas Bitung.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="year">2026</div>
+              <h3>Lomba Porseni Pidato Bahasa Arab</h3>
+              <p>
+                Mengikuti lomba pidato Bahasa Arab tingkat KMMA Wilayah IV 2026.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="motto reveal">
+          <p>MOTO HIDUP</p>
+          <h2>"Anemy is Me"</h2>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Muhammad Azzam Mifftahul Choir. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tahun footer otomatis
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Tutup menu setelah memilih navigasi
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Animasi saat elemen masuk layar
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+
+</body>
+</html>
